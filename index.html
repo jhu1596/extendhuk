@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 과학 실험 확장 사이트</title>
+    <style>
+        /* 전체 페이지 스타일 설정 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            /* 2. 사이트 버튼이 있는 배경 부분을 연한 파란색으로 변경 */
+            background-color: #E8EEF4; 
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* 상단 헤더 스타일 */
+        header {
+            /* 1. 상단 부분을 보라색 그라데이션으로 변경 */
+            background: linear-gradient(135deg, #8b78e6 0%, #6b4c9a 100%);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* 카드들이 배치될 그리드 컨테이너 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* 개별 카드 (버튼 역할) 스타일 */
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #E0E0E0;
+        }
+
+        /* 마우스를 올렸을 때의 효과 */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 카드 썸네일 이미지 영역 */
+        .card-image {
+            height: 160px;
+            background-color: #588B8B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: relative;
+        }
+
+        /* 썸네일 좌측 하단 아이콘 느낌의 박스 */
+        .icon-box {
+            position: absolute;
+            bottom: -15px;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            background-color: #7BC5AE;
+            border: 3px solid white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* 카드 내용 영역 (제목 및 설명) */
+        .card-content {
+            padding: 25px 20px 15px 20px;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        /* 카드 하단 정보 영역 (요구사항, 협력사 등) */
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid #F0F0F0;
+            padding-top: 15px;
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .heart {
+            color: #FF7B7B;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        /* 오른쪽 하단 HUK 캐릭터 영역 (추가된 코드) */
+        .huk-floating {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            text-align: center;
+            z-index: 999;
+        }
+        .huk-floating img {
+            height: 120px;
+            width: auto;
+            display: block;
+            margin: 6px auto 4px;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,.25));
+        }
+        .huk-floating button {
+            background: rgba(255,255,255,0.92);
+            color: #3a3a3a;
+            border: none;
+            border-radius: 16px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 800;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .huk-floating .designed-by {
+            font-size: 14px; 
+            font-weight: 800; 
+            color: #000; /* 이미지처럼 진한 색상 적용 */
+            margin-top: 4px;
+        }
+
+        /* ✅ 우측 언어/네비게이션 영역 추가 */
+        .lang-picker {
+            position: fixed;
+            top: 10px;
+            right: 14px;
+            z-index: 6500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .lang-picker select {
+            width: 150px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.55);
+            background: rgba(255,255,255,0.92);
+            font-weight: 800;
+            font-size: 13px;
+            outline: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,.12);
+            color: #333;
+        }
+        
+        .site-switch {
+            display: flex;
+            flex-direction: column;
+            width: 90px;
+            position: fixed;
+            top: 56px;
+            right: 14px;
+            z-index: 6000;
+            gap: 8px;
+            align-items: stretch;
+            padding: 6px 8px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,.18);
+        }
+        .switch-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 64px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.55);
+            transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+        }
+        .switch-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0,0,0,.18);
+        }
+        .switch-btn.is-active {
+            background: #fff;
+            color: #5b4bd6;
+            border-color: #fff;
+        }
+        .switch-btn.is-inactive {
+            background: rgba(0,0,0,0.12);
+            color: #fff;
+            border-color: rgba(255,255,255,0.55);
+        }
+
+        @media (max-width: 900px) {
+            .lang-picker { right: 12px; top: 10px; }
+            .site-switch { top: 56px; right: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ 언어 선택 드롭다운 (추가된 부분) -->
+    <div class="lang-picker">
+        <span aria-hidden="true" style="font-size:18px; color:white;">🌐</span>
+        <select id="langSelect" aria-label="Language">
+            <option value="ko">한국어</option>
+        </select>
+    </div>
+
+    <!-- ✅ 다른 사이트로 이동하는 네비게이션 (추가된 부분) -->
+    <nav class="site-switch" aria-label="사이트 이동">
+        <a id="navUploader" class="switch-btn is-inactive" href="https://joo.is/lefthuk" target="_blank" rel="noopener">업로더</a>
+        <a id="navData" class="switch-btn is-inactive" href="https://joo.is/righthuk" target="_blank" rel="noopener">데이터</a>
+        <a id="navReport" class="switch-btn is-inactive" href="https://joo.is/reporthuk" target="_blank" rel="noopener">보고서</a>
+        <a id="navDashboard" class="switch-btn is-inactive" href="https://joo.is/dashboardhuk" target="_blank" rel="noopener">대시보드</a>
+        <a id="navExtension" class="switch-btn is-active" href="#">확장</a>
+        <a id="navCommunity" class="switch-btn is-inactive" href="https://joo.is/sharehuk" target="_blank" rel="noopener">커뮤니티</a>
+    </nav>
+
+    <header>
+        데이터 과학 실험 확장 모음
+    </header>
+
+    <div class="grid-container">
+        <!-- 첫 번째 실험 사이트 카드 (클릭 시 새 창 열림) -->
+        <a href="https://volumedatahuk.netlify.app/" target="_blank" class="card">
+            <div class="card-image" style="background-color: #79A3B1;">
+                Volume Data
+                <div class="icon-box">📊</div>
+            </div>
+            <div class="card-content">
+                <div class="card-title">1. 부피 데이터 분석기</div>
+                <div class="card-desc">
+                    부피 데이터의 변화를 분석하는 과학 실험 웹 애플리케이션입니다.
+                </div>
+                <div class="card-footer">
+                    <div class="footer-info">
+                        <span>요구사항</span>
+                        <span>📶 와이파이</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- 두 번째 추가할 사이트 예시 (필요시 URL 변경하여 사용) -->
+        <a href="#" target="_blank" class="card">
+            <div class="card-image" style="background-color: #E29578;">
+                Next Experiment
+                <div class="icon-box">🧪</div>
+            </div>
+            <div class="card-content">
+                <div class="card-title">2. (예정)</div>
+                <div class="card-desc">
+                    여기에 추가할 두 번째 데이터 과학 실험 사이트의 설명을 입력하세요. 클릭하면 연결됩니다.
+                </div>
+                <div class="card-footer">
+                    <div class="footer-info">
+                        <span>요구사항</span>
+                        <span>📶 와이파이</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- 오른쪽 하단 HUK 캐릭터 (추가된 코드) -->
+    <div class="huk-floating">
+        <button id="btnHelp" onclick="window.open('https://youtu.be/v9BiNOf1BEA', '_blank')">사용법</button>
+        <img src="https://lh3.googleusercontent.com/d/1zBWvt8nrhCOPk47fCJLsdgR0BkFBk2QH" alt="HUK character">
+    </div>
+
+</body>
+</html>
