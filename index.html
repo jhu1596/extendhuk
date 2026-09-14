@@ -10,7 +10,6 @@
             margin: 0;
             padding: 0;
             font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-            /* 2. 사이트 버튼이 있는 배경 부분을 연한 파란색으로 변경 */
             background-color: #E8EEF4; 
             min-height: 100vh;
             background-attachment: fixed;
@@ -18,7 +17,6 @@
 
         /* 상단 헤더 스타일 */
         header {
-            /* 1. 상단 부분을 보라색 그라데이션으로 변경 */
             background: linear-gradient(135deg, #8b78e6 0%, #6b4c9a 100%);
             color: white;
             text-align: center;
@@ -93,6 +91,8 @@
         .card-content {
             padding: 25px 20px 15px 20px;
             flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .card-title {
@@ -107,6 +107,7 @@
             color: #666;
             line-height: 1.4;
             margin-bottom: 20px;
+            flex-grow: 1;
         }
 
         /* 카드 하단 정보 영역 (요구사항, 협력사 등) */
@@ -126,13 +127,7 @@
             gap: 3px;
         }
 
-        .heart {
-            color: #FF7B7B;
-            font-weight: bold;
-            font-size: 0.85rem;
-        }
-
-        /* 오른쪽 하단 HUK 캐릭터 영역 (추가된 코드) */
+        /* 오른쪽 하단 HUK 캐릭터 영역 */
         .huk-floating {
             position: fixed;
             right: 24px;
@@ -158,14 +153,8 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             cursor: pointer;
         }
-        .huk-floating .designed-by {
-            font-size: 14px; 
-            font-weight: 800; 
-            color: #000; /* 이미지처럼 진한 색상 적용 */
-            margin-top: 4px;
-        }
 
-        /* ✅ 우측 언어/네비게이션 영역 추가 */
+        /* 우측 언어/네비게이션 영역 */
         .lang-picker {
             position: fixed;
             top: 10px;
@@ -242,7 +231,7 @@
 </head>
 <body>
 
-    <!-- ✅ 언어 선택 드롭다운 (추가된 부분) -->
+    <!-- 언어 선택 드롭다운 -->
     <div class="lang-picker">
         <span aria-hidden="true" style="font-size:18px; color:white;">🌐</span>
         <select id="langSelect" aria-label="Language">
@@ -250,7 +239,7 @@
         </select>
     </div>
 
-    <!-- ✅ 다른 사이트로 이동하는 네비게이션 (추가된 부분) -->
+    <!-- 다른 사이트로 이동하는 네비게이션 -->
     <nav class="site-switch" aria-label="사이트 이동">
         <a id="navUploader" class="switch-btn is-inactive" href="https://joo.is/lefthuk" target="_blank" rel="noopener">업로더</a>
         <a id="navData" class="switch-btn is-inactive" href="https://joo.is/righthuk" target="_blank" rel="noopener">데이터</a>
@@ -265,7 +254,7 @@
     </header>
 
     <div class="grid-container">
-        <!-- 첫 번째 실험 사이트 카드 (클릭 시 새 창 열림) -->
+        <!-- 첫 번째: 부피 데이터 분석기 -->
         <a href="https://volumedatahuk.netlify.app/" target="_blank" class="card">
             <div class="card-image" style="background-color: #79A3B1;">
                 Volume Data
@@ -285,16 +274,16 @@
             </div>
         </a>
 
-        <!-- 두 번째 추가할 사이트 예시 (필요시 URL 변경하여 사용) -->
-        <a href="#" target="_blank" class="card">
+        <!-- 두 번째: 운동 실시간 분석기 -->
+        <a href="https://motionshothuk.netlify.app/" target="_blank" class="card">
             <div class="card-image" style="background-color: #E29578;">
-                Next Experiment
-                <div class="icon-box">🧪</div>
+                Motion Shot
+                <div class="icon-box">🏃‍♂️</div>
             </div>
             <div class="card-content">
-                <div class="card-title">2. (예정)</div>
+                <div class="card-title">2. 운동 실시간 분석기</div>
                 <div class="card-desc">
-                    여기에 추가할 두 번째 데이터 과학 실험 사이트의 설명을 입력하세요. 클릭하면 연결됩니다.
+                    영상을 활용하여 물체의 운동 궤적 및 물리량을 실시간으로 분석하는 웹 애플리케이션입니다.
                 </div>
                 <div class="card-footer">
                     <div class="footer-info">
@@ -304,9 +293,29 @@
                 </div>
             </div>
         </a>
+
+        <!-- 세 번째: 음성 파형 비교기 -->
+        <a href="https://voicewaveformanalyzerhuk.netlify.app/" target="_blank" class="card">
+            <div class="card-image" style="background-color: #6C5CE7;">
+                Waveform Analyzer
+                <div class="icon-box">🎤</div>
+            </div>
+            <div class="card-content">
+                <div class="card-title">3. 음성 파형 비교기</div>
+                <div class="card-desc">
+                    내 목소리의 실시간 파형을 관찰하고 다른 사람의 목소리와 비교할 수 있는 앱입니다.
+                </div>
+                <div class="card-footer">
+                    <div class="footer-info">
+                        <span>요구사항</span>
+                        <span>📶 와이파이 / 마이크</span>
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
 
-    <!-- 오른쪽 하단 HUK 캐릭터 (추가된 코드) -->
+    <!-- 오른쪽 하단 HUK 캐릭터 -->
     <div class="huk-floating">
         <button id="btnHelp" onclick="window.open('https://youtu.be/v9BiNOf1BEA', '_blank')">사용법</button>
         <img src="https://lh3.googleusercontent.com/d/1zBWvt8nrhCOPk47fCJLsdgR0BkFBk2QH" alt="HUK character">
