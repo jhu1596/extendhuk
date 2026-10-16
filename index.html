@@ -26,6 +26,30 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
+        /* 검색창 영역 */
+        .search-container {
+            max-width: 600px;
+            margin: 30px auto 0;
+            padding: 0 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: 2px solid #fff;
+            border-radius: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            outline: none;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .search-input:focus {
+            border-color: #8b78e6;
+            box-shadow: 0 4px 12px rgba(139, 120, 230, 0.2);
+        }
+
         /* 카드들이 배치될 그리드 컨테이너 */
         .grid-container {
             display: grid;
@@ -110,7 +134,7 @@
             flex-grow: 1;
         }
 
-        /* 카드 하단 정보 영역 (요구사항, 협력사 등) */
+        /* 카드 하단 정보 영역 (요구사항, 관련 단원 등) */
         .card-footer {
             display: flex;
             justify-content: space-between;
@@ -125,6 +149,22 @@
             display: flex;
             flex-direction: column;
             gap: 3px;
+        }
+
+        /* 관련 단원 (우측 정렬용) */
+        .footer-info.right {
+            text-align: right;
+            align-items: flex-end;
+        }
+
+        .footer-info span:first-child {
+            font-weight: bold;
+            color: #b0b0b0;
+        }
+
+        .footer-info span:last-child {
+            color: #555;
+            font-weight: 500;
         }
 
         /* 오른쪽 하단 HUK 캐릭터 영역 */
@@ -253,12 +293,17 @@
         데이터 과학 실험 확장 모음
     </header>
 
-    <div class="grid-container">
+    <!-- 검색창 영역 -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="확장 제목, 내용, 관련 단원 검색...">
+    </div>
+
+    <div class="grid-container" id="cardContainer">
         <!-- 첫 번째: 부피 데이터 분석기 -->
         <a href="https://volumedatahuk.netlify.app/" target="_blank" class="card">
             <div class="card-image" style="background-color: #79A3B1;">
                 Volume Data
-                <div class="icon-box">📊</div>
+                <div class="icon-box" style="background-color: #5C8392;">📊</div>
             </div>
             <div class="card-content">
                 <div class="card-title">1. 부피 데이터 분석기</div>
@@ -270,6 +315,10 @@
                         <span>요구사항</span>
                         <span>📶 와이파이</span>
                     </div>
+                    <div class="footer-info right">
+                        <span>관련 단원</span>
+                        <span class="unit-text">중1 과학 - 기체의 성질</span>
+                    </div>
                 </div>
             </div>
         </a>
@@ -278,7 +327,7 @@
         <a href="https://motionshothuk.netlify.app/" target="_blank" class="card">
             <div class="card-image" style="background-color: #E29578;">
                 Motion Shot
-                <div class="icon-box">🏃‍♂️</div>
+                <div class="icon-box" style="background-color: #C0795E;">🏃‍♂️</div>
             </div>
             <div class="card-content">
                 <div class="card-title">2. 운동 실시간 분석기</div>
@@ -290,6 +339,10 @@
                         <span>요구사항</span>
                         <span>📶 와이파이</span>
                     </div>
+                    <div class="footer-info right">
+                        <span>관련 단원</span>
+                        <span class="unit-text">중3 과학 - 운동과 에너지</span>
+                    </div>
                 </div>
             </div>
         </a>
@@ -298,7 +351,7 @@
         <a href="https://voicewaveformanalyzerhuk.netlify.app/" target="_blank" class="card">
             <div class="card-image" style="background-color: #6C5CE7;">
                 Waveform Analyzer
-                <div class="icon-box">🎤</div>
+                <div class="icon-box" style="background-color: #5548B8;">🎤</div>
             </div>
             <div class="card-content">
                 <div class="card-title">3. 음성 파형 비교기</div>
@@ -309,6 +362,34 @@
                     <div class="footer-info">
                         <span>요구사항</span>
                         <span>📶 와이파이 / 마이크</span>
+                    </div>
+                    <div class="footer-info right">
+                        <span>관련 단원</span>
+                        <span class="unit-text">중2 과학 - 빛과 파동</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- 네 번째: 전기 회로 연결 연습 (새로 추가됨) -->
+        <a href="https://electriccircuithuk.netlify.app/" target="_blank" class="card">
+            <div class="card-image" style="background-color: #F4A261;">
+                Electric Circuit
+                <div class="icon-box" style="background-color: #D4884C;">💡</div>
+            </div>
+            <div class="card-content">
+                <div class="card-title">4. 전기 회로 연결 연습</div>
+                <div class="card-desc">
+                    가상으로 전기 회로를 직접 연결해 보고 전압, 전류 등을 관찰할 수 있는 시뮬레이션입니다.
+                </div>
+                <div class="card-footer">
+                    <div class="footer-info">
+                        <span>요구사항</span>
+                        <span>📶 와이파이</span>
+                    </div>
+                    <div class="footer-info right">
+                        <span>관련 단원</span>
+                        <span class="unit-text">중2 과학 - 전기와 자기</span>
                     </div>
                 </div>
             </div>
@@ -321,5 +402,29 @@
         <img src="https://lh3.googleusercontent.com/d/1zBWvt8nrhCOPk47fCJLsdgR0BkFBk2QH" alt="HUK character">
     </div>
 
+    <!-- 검색 기능을 위한 JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const cards = document.querySelectorAll('.card');
+
+            searchInput.addEventListener('input', (e) => {
+                // 검색어를 소문자로 변환하고 공백 제거
+                const keyword = e.target.value.toLowerCase().trim();
+
+                cards.forEach(card => {
+                    // 카드의 모든 텍스트 가져오기 (제목, 설명, 단원 등 포함)
+                    const cardText = card.textContent.toLowerCase();
+
+                    // 검색어가 카드 텍스트에 포함되어 있으면 보이고, 아니면 숨김
+                    if (cardText.includes(keyword)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
