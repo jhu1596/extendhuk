@@ -305,6 +305,24 @@
             .lang-picker { right: 12px; top: 10px; }
             .site-switch { top: 56px; right: 12px; }
         }
+        /* 항상 맨 앞에 고정되는 카드 */
+        .card.pinned {
+            order: -1;
+            border: 2px solid #8b78e6;
+            box-shadow: 0 6px 16px rgba(139, 120, 230, 0.25);
+        }
+        .pin-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #fff;
+            color: #6b4c9a;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 999px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -346,6 +364,30 @@
     </div>
 
     <div class="grid-container" id="cardContainer">
+        <!-- 고정: 모바일 센서 과학실험 & 데이터 분석 (융합) -->
+        <a href="https://upperhuk.netlify.app/" target="_blank" class="card pinned" data-category="융합" data-pinned="true">
+            <div class="card-image" style="background-color: #5B6EE1;">
+                Mobile Sensor Lab
+                <span class="pin-badge">📌 대표</span>
+                <div class="icon-box" style="background-color: #4857B8;">📱</div>
+            </div>
+            <div class="card-content">
+                <div class="card-title">모바일 센서 과학실험 &amp; 데이터 분석</div>
+                <div class="card-desc">
+                    스마트폰의 빛, 소리, 가속도, 기압 등 센서로 데이터를 측정하고 그래프로 분석하는 프로그램입니다.
+                </div>
+                <div class="card-footer">
+                    <div class="footer-info">
+                        <span>요구사항</span>
+                        <span>📱스마트폰 또는 태블릿PC</span>
+                    </div>
+                    <div class="footer-info right">
+                        <span>관련 단원</span>
+                        <span class="unit-text">전 영역-탐구 활동</span>
+                    </div>
+                </div>
+            </div>
+        </a>
         <!-- 첫 번째: 부피 데이터 분석기 (화학) -->
         <a href="https://volumedatahuk.netlify.app/" target="_blank" class="card" data-category="화학">
             <div class="card-image" style="background-color: #79A3B1;">
@@ -807,7 +849,8 @@
                     // 1. 검색어 일치 여부 확인
                     const matchesKeyword = cardText.includes(keyword);
                     // 2. 카테고리 일치 여부 확인 ('전체' 상태이거나 선택된 카테고리에 포함되는지)
-                    const matchesCategory = activeCategories.length === 0 || activeCategories.includes(cardCategory);
+                    const isPinned = card.getAttribute('data-pinned') === 'true';
+                    const matchesCategory = isPinned || activeCategories.length === 0 || activeCategories.includes(cardCategory);
 
                     // 두 조건을 모두 만족할 때만 카드를 표시
                     if (matchesKeyword && matchesCategory) {
