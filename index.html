@@ -82,10 +82,37 @@
         }
 
         .filter-btn.active {
-            background-color: #8b78e6;
+            background-color: #475569;
             color: white;
-            border-color: #8b78e6;
-            box-shadow: 0 4px 10px rgba(139, 120, 230, 0.3);
+            border-color: #475569;
+            box-shadow: 0 4px 10px rgba(71, 85, 105, 0.3);
+        }
+
+        /* 카테고리별 필터 버튼 활성 색상 */
+        .filter-btn[data-filter="물리"].active {
+            background-color: #D64550;
+            border-color: #D64550;
+            box-shadow: 0 4px 10px rgba(214, 69, 80, 0.3);
+        }
+        .filter-btn[data-filter="화학"].active {
+            background-color: #2563EB;
+            border-color: #2563EB;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+        .filter-btn[data-filter="생명과학"].active {
+            background-color: #16A34A;
+            border-color: #16A34A;
+            box-shadow: 0 4px 10px rgba(22, 163, 74, 0.3);
+        }
+        .filter-btn[data-filter="지구과학"].active {
+            background-color: #D97706;
+            border-color: #D97706;
+            box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
+        }
+        .filter-btn[data-filter="융합"].active {
+            background-color: #7C3AED;
+            border-color: #7C3AED;
+            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
         }
 
         /* 카드들이 배치될 그리드 컨테이너 */
@@ -305,11 +332,12 @@
             .lang-picker { right: 12px; top: 10px; }
             .site-switch { top: 56px; right: 12px; }
         }
+
         /* 항상 맨 앞에 고정되는 카드 */
         .card.pinned {
             order: -1;
-            border: 2px solid #8b78e6;
-            box-shadow: 0 6px 16px rgba(139, 120, 230, 0.25);
+            border: 2px solid #7C3AED;
+            box-shadow: 0 6px 16px rgba(124, 58, 237, 0.25);
         }
         .pin-badge {
             position: absolute;
@@ -364,12 +392,12 @@
     </div>
 
     <div class="grid-container" id="cardContainer">
-        <!-- 고정: 모바일 센서 과학실험 & 데이터 분석 (융합) -->
+        <!-- 고정: 모바일 센서 과학실험 & 데이터 분석 (융합 - 보라 계열) -->
         <a href="https://upperhuk.netlify.app/" target="_blank" class="card pinned" data-category="융합" data-pinned="true">
-            <div class="card-image" style="background-color: #5B6EE1;">
+            <div class="card-image" style="background-color: #6C5CE7;">
                 Mobile Sensor Lab
                 <span class="pin-badge">📌 대표</span>
-                <div class="icon-box" style="background-color: #4857B8;">📱</div>
+                <div class="icon-box" style="background-color: #5344C2;">📱</div>
             </div>
             <div class="card-content">
                 <div class="card-title">모바일 센서 과학실험</div>
@@ -388,11 +416,12 @@
                 </div>
             </div>
         </a>
-        <!-- 첫 번째: 부피 데이터 분석기 (화학) -->
+
+        <!-- 첫 번째: 부피 데이터 분석기 (화학 - 푸른 계열) -->
         <a href="https://volumedatahuk.netlify.app/" target="_blank" class="card" data-category="화학">
-            <div class="card-image" style="background-color: #79A3B1;">
+            <div class="card-image" style="background-color: #2B7BBB;">
                 Volume Data
-                <div class="icon-box" style="background-color: #5C8392;">📊</div>
+                <div class="icon-box" style="background-color: #1E5E91;">📊</div>
             </div>
             <div class="card-content">
                 <div class="card-title">부피 데이터 분석기</div>
@@ -412,11 +441,11 @@
             </div>
         </a>
 
-        <!-- 두 번째: 운동 실시간 분석기 (물리) -->
+        <!-- 두 번째: 운동 실시간 분석기 (물리 - 붉은 계열) -->
         <a href="https://motionshothuk.netlify.app/" target="_blank" class="card" data-category="물리">
-            <div class="card-image" style="background-color: #E29578;">
+            <div class="card-image" style="background-color: #E05A47;">
                 Motion Shot
-                <div class="icon-box" style="background-color: #C0795E;">🏃‍♂️</div>
+                <div class="icon-box" style="background-color: #B84333;">🏃‍♂️</div>
             </div>
             <div class="card-content">
                 <div class="card-title">운동 실시간 분석기</div>
@@ -436,11 +465,11 @@
             </div>
         </a>
 
-        <!-- 세 번째: 음성 파형 비교기 (물리) -->
+        <!-- 세 번째: 음성 파형 비교기 (물리 - 붉은 계열) -->
         <a href="https://voicewaveformanalyzerhuk.netlify.app/" target="_blank" class="card" data-category="물리">
-            <div class="card-image" style="background-color: #6C5CE7;">
+            <div class="card-image" style="background-color: #D64550;">
                 Waveform Analyzer
-                <div class="icon-box" style="background-color: #5548B8;">🎤</div>
+                <div class="icon-box" style="background-color: #AD323B;">🎤</div>
             </div>
             <div class="card-content">
                 <div class="card-title">음성 파형 비교기</div>
@@ -460,11 +489,11 @@
             </div>
         </a>
 
-        <!-- 네 번째: 전기 회로 연결 연습 (물리) -->
+        <!-- 네 번째: 전기 회로 연결 연습 (물리 - 붉은 계열) -->
         <a href="https://electriccircuithuk.netlify.app/" target="_blank" class="card" data-category="물리">
-            <div class="card-image" style="background-color: #F4A261;">
+            <div class="card-image" style="background-color: #E86F51;">
                 Electric Circuit
-                <div class="icon-box" style="background-color: #D4884C;">💡</div>
+                <div class="icon-box" style="background-color: #C2563B;">💡</div>
             </div>
             <div class="card-content">
                 <div class="card-title">전기 회로 연결 연습</div>
@@ -484,11 +513,11 @@
             </div>
         </a>
 
-        <!-- 다섯 번째: 저항의 연결 시뮬레이터 (물리) -->
+        <!-- 다섯 번째: 저항의 연결 시뮬레이터 (물리 - 붉은 계열) -->
         <a href="https://resistorhuk.netlify.app/" target="_blank" class="card" data-category="물리">
-            <div class="card-image" style="background-color: #2A9D8F;">
+            <div class="card-image" style="background-color: #C94A4A;">
                 Resistor Simulator
-                <div class="icon-box" style="background-color: #21867A;">🔌</div>
+                <div class="icon-box" style="background-color: #A13636;">🔌</div>
             </div>
             <div class="card-content">
                 <div class="card-title">저항의 연결(시뮬레이터)</div>
@@ -508,11 +537,11 @@
             </div>
         </a>
 
-        <!-- 여섯 번째: 화학 카드 짝짓기 챌린지 (화학) -->
+        <!-- 여섯 번째: 화학 카드 짝짓기 챌린지 (화학 - 푸른 계열) -->
         <a href="https://elementcardhuk.netlify.app/" target="_blank" class="card" data-category="화학">
-            <div class="card-image" style="background-color: #E07A5F;">
+            <div class="card-image" style="background-color: #3B82F6;">
                 Element Card
-                <div class="icon-box" style="background-color: #C66B53;">🃏</div>
+                <div class="icon-box" style="background-color: #2563EB;">🃏</div>
             </div>
             <div class="card-content">
                 <div class="card-title">화학 카드 짝짓기 챌린지</div>
@@ -532,11 +561,11 @@
             </div>
         </a>
 
-        <!-- 일곱 번째: 분광광도계 프로그램 (화학) -->
+        <!-- 일곱 번째: 분광광도계 프로그램 (화학 - 푸른 계열) -->
         <a href="https://spectrophotometerhuk.netlify.app/" target="_blank" class="card" data-category="화학">
-            <div class="card-image" style="background-color: #9B59B6;">
+            <div class="card-image" style="background-color: #0284C7;">
                 Spectrophotometer
-                <div class="icon-box" style="background-color: #8A4B9F;">🌈</div>
+                <div class="icon-box" style="background-color: #0369A1;">🌈</div>
             </div>
             <div class="card-content">
                 <div class="card-title">분광광도계 프로그램</div>
@@ -556,11 +585,11 @@
             </div>
         </a>
 
-        <!-- 여덟 번째: 자기장 AR 시뮬레이터 (물리) -->
+        <!-- 여덟 번째: 자기장 AR 시뮬레이터 (물리 - 붉은 계열) -->
         <a href="https://magneticfieldhuk.netlify.app/" target="_blank" class="card" data-category="물리">
-            <div class="card-image" style="background-color: #3D5A80;">
+            <div class="card-image" style="background-color: #B83B5E;">
                 Magnetic Field AR
-                <div class="icon-box" style="background-color: #2F4766;">🧲</div>
+                <div class="icon-box" style="background-color: #912A47;">🧲</div>
             </div>
             <div class="card-content">
                 <div class="card-title">자기장 AR 시뮬레이터</div>
@@ -580,11 +609,11 @@
             </div>
         </a>
 
-                <!-- 아홉 번째: 자극과 반응 데이터 분석 (생명과학) -->
+        <!-- 아홉 번째: 자극과 반응 데이터 분석 (생명과학 - 초록 계열) -->
         <a href="https://stimulusandresponsehuk.netlify.app/" target="_blank" class="card" data-category="생명과학">
-            <div class="card-image" style="background-color: #E76F51;">
+            <div class="card-image" style="background-color: #2A9D8F;">
                 Stimulus &amp; Response
-                <div class="icon-box" style="background-color: #C85B40;">⚡</div>
+                <div class="icon-box" style="background-color: #1F7A6F;">⚡</div>
             </div>
             <div class="card-content">
                 <div class="card-title">자극과 반응 데이터 분석</div>
@@ -604,11 +633,11 @@
             </div>
         </a>
 
-        <!-- 열 번째: 생태계 먹이그물 시뮬레이터 (생명과학) -->
+        <!-- 열 번째: 생태계 먹이그물 시뮬레이터 (생명과학 - 초록 계열) -->
         <a href="https://naturalselectionhuk.netlify.app/" target="_blank" class="card" data-category="생명과학">
-            <div class="card-image" style="background-color: #6A994E;">
+            <div class="card-image" style="background-color: #4D9048;">
                 Food Web
-                <div class="icon-box" style="background-color: #55803D;">🐺</div>
+                <div class="icon-box" style="background-color: #3B7037;">🐺</div>
             </div>
             <div class="card-content">
                 <div class="card-title">생태계 먹이그물 시뮬레이터</div>
@@ -628,11 +657,11 @@
             </div>
         </a>
 
-        <!-- 열한 번째: 스마트폰 지진계 분석기 (지구과학) -->
+        <!-- 열한 번째: 스마트폰 지진계 분석기 (지구과학 - 황토/앰버 계열) -->
         <a href="https://earthquakehuk.netlify.app/" target="_blank" class="card" data-category="지구과학">
-            <div class="card-image" style="background-color: #BC6C25;">
+            <div class="card-image" style="background-color: #C26D2D;">
                 Seismograph
-                <div class="icon-box" style="background-color: #9E5A1F;">🌋</div>
+                <div class="icon-box" style="background-color: #9C531E;">🌋</div>
             </div>
             <div class="card-content">
                 <div class="card-title">스마트폰 지진계 분석기</div>
@@ -652,11 +681,11 @@
             </div>
         </a>
 
-        <!-- 열두 번째: 달의 위상 변화 관측기 (지구과학) -->
+        <!-- 열두 번째: 달의 위상 변화 관측기 (지구과학 - 황토/앰버 계열) -->
         <a href="https://phasesofthemoonhuk.netlify.app/" target="_blank" class="card" data-category="지구과학">
-            <div class="card-image" style="background-color: #355070;">
+            <div class="card-image" style="background-color: #D97706;">
                 Moon Phases
-                <div class="icon-box" style="background-color: #2A4059;">🌙</div>
+                <div class="icon-box" style="background-color: #B45309;">🌙</div>
             </div>
             <div class="card-content">
                 <div class="card-title">달의 위상 변화 관측기</div>
@@ -676,11 +705,11 @@
             </div>
         </a>
 
-        <!-- 열세 번째: 초음파 레이더 스캐너 (융합) -->
+        <!-- 열세 번째: 초음파 레이더 스캐너 (융합 - 보라 계열) -->
         <a href="https://ultrasoundradarhuk.netlify.app/" target="_blank" class="card" data-category="융합">
-            <div class="card-image" style="background-color: #2B9348;">
+            <div class="card-image" style="background-color: #7C3AED;">
                 Ultrasound Radar
-                <div class="icon-box" style="background-color: #1E6F35;">📡</div>
+                <div class="icon-box" style="background-color: #5B21B6;">📡</div>
             </div>
             <div class="card-content">
                 <div class="card-title">초음파 레이더 스캐너</div>
@@ -700,11 +729,11 @@
             </div>
         </a>
 
-        <!-- 열네 번째: AI 핸드 트래킹 로봇팔 제어 (융합) -->
+        <!-- 열네 번째: AI 핸드 트래킹 로봇팔 제어 (융합 - 보라 계열) -->
         <a href="https://roboticarmhuk.netlify.app/" target="_blank" class="card" data-category="융합">
-            <div class="card-image" style="background-color: #4361EE;">
+            <div class="card-image" style="background-color: #6366F1;">
                 Robotic Arm
-                <div class="icon-box" style="background-color: #324AB2;">🦾</div>
+                <div class="icon-box" style="background-color: #4F46E5;">🦾</div>
             </div>
             <div class="card-content">
                 <div class="card-title">AI 핸드 트래킹 로봇팔 제어</div>
@@ -724,11 +753,11 @@
             </div>
         </a>
 
-        <!-- 열다섯 번째: AI 모션 인식 핸들 레이싱 (융합) -->
+        <!-- 열다섯 번째: AI 모션 인식 핸들 레이싱 (융합 - 보라 계열) -->
         <a href="https://camdrivehuk.netlify.app/" target="_blank" class="card" data-category="융합">
-            <div class="card-image" style="background-color: #5E60CE;">
+            <div class="card-image" style="background-color: #8B5CF6;">
                 Cam Driver
-                <div class="icon-box" style="background-color: #484A9E;">🚗</div>
+                <div class="icon-box" style="background-color: #6D28D9;">🚗</div>
             </div>
             <div class="card-content">
                 <div class="card-title">AI 모션 인식 핸들 레이싱</div>
@@ -748,11 +777,11 @@
             </div>
         </a>
 
-        <!-- 열여섯 번째: AI 모션 인식 얼굴 러너 (융합) -->
+        <!-- 열여섯 번째: AI 모션 인식 얼굴 러너 (융합 - 보라 계열) -->
         <a href="https://facerunnerhuk.netlify.app/" target="_blank" class="card" data-category="융합">
-            <div class="card-image" style="background-color: #F77F00;">
+            <div class="card-image" style="background-color: #9333EA;">
                 Face Runner
-                <div class="icon-box" style="background-color: #C96700;">🏃</div>
+                <div class="icon-box" style="background-color: #7E22CE;">🏃</div>
             </div>
             <div class="card-content">
                 <div class="card-title">AI 모션 인식 얼굴 러너</div>
@@ -772,11 +801,11 @@
             </div>
         </a>
 
-        <!-- 열일곱 번째: AI 모션 인식 3D 새 비행 체험 (융합) -->
+        <!-- 열일곱 번째: AI 모션 인식 3D 새 비행 체험 (융합 - 보라 계열) -->
         <a href="https://birdactivityhuk.netlify.app/" target="_blank" class="card" data-category="융합">
-            <div class="card-image" style="background-color: #4EA8DE;">
+            <div class="card-image" style="background-color: #7E57C2;">
                 Sky Bird
-                <div class="icon-box" style="background-color: #3B82AD;">🐦</div>
+                <div class="icon-box" style="background-color: #5E35B1;">🐦</div>
             </div>
             <div class="card-content">
                 <div class="card-title">AI 모션 인식 3D 새 비행 체험</div>
@@ -796,11 +825,11 @@
             </div>
         </a>
 
-        <!-- 열여덟 번째: 센서 야구 게임 (융합) -->
+        <!-- 열여덟 번째: 센서 야구 게임 (융합 - 보라 계열) -->
         <a href="https://baseballgamehuk.netlify.app/" target="_blank" class="card" data-category="융합">
-            <div class="card-image" style="background-color: #2D6A4F;">
+            <div class="card-image" style="background-color: #5B4BD6;">
                 Baseball Game
-                <div class="icon-box" style="background-color: #245640;">⚾</div>
+                <div class="icon-box" style="background-color: #4335AD;">⚾</div>
             </div>
             <div class="card-content">
                 <div class="card-title">센서 야구 게임</div>
@@ -820,11 +849,11 @@
             </div>
         </a>
 
-        <!-- 열아홉 번째: 3D 화학 결합 실험실 (화학) -->
+        <!-- 열아홉 번째: 3D 화학 결합 실험실 (화학 - 푸른 계열) -->
         <a href="https://chemicalequationhuk.netlify.app/" target="_blank" class="card" data-category="화학">
-            <div class="card-image" style="background-color: #0077B6;">
+            <div class="card-image" style="background-color: #1D4ED8;">
                 3D Molecule AR
-                <div class="icon-box" style="background-color: #005F92;">⚛️</div>
+                <div class="icon-box" style="background-color: #1E3A8A;">⚛️</div>
             </div>
             <div class="card-content">
                 <div class="card-title">3D 화학 결합 실험실</div>
@@ -844,11 +873,11 @@
             </div>
         </a>
 
-        <!-- 열아홉 번째: 중화 적정 및 지시약 판독기 (화학) -->
+        <!-- 스무 번째: 중화 적정 및 지시약 판독기 (화학 - 푸른 계열) -->
         <a href="https://titrationhuk.netlify.app/" target="_blank" class="card" data-category="화학">
-            <div class="card-image" style="background-color: #D81159;">
+            <div class="card-image" style="background-color: #0891B2;">
                 RGB Titration
-                <div class="icon-box" style="background-color: #B20E4A;">🧪</div>
+                <div class="icon-box" style="background-color: #0E7490;">🧪</div>
             </div>
             <div class="card-content">
                 <div class="card-title">중화 적정 및 지시약 판독기</div>
@@ -868,7 +897,7 @@
             </div>
         </a>
     
-        <!-- 사람 유전 (생명과학) -->
+        <!-- 사람 유전 (생명과학 - 초록 계열) -->
         <a href="https://humangeneticshuk.netlify.app/" target="_blank" class="card" data-category="생명과학">
             <div class="card-image" style="background-color: #10B981;">
                 Human Genetics
@@ -892,7 +921,7 @@
             </div>
         </a>
 
-        <!-- 멘델 유전 (생명과학) -->
+        <!-- 멘델 유전 (생명과학 - 초록 계열) -->
         <a href="https://mendelianinheritancehuk.netlify.app/" target="_blank" class="card" data-category="생명과학">
             <div class="card-image" style="background-color: #22C55E;">
                 Mendelian Genetics
@@ -916,7 +945,7 @@
             </div>
         </a>
 
-        <!-- 가계도 분석 (생명과학) -->
+        <!-- 가계도 분석 (생명과학 - 초록 계열) -->
         <a href="https://pedigreeanalysishuk.netlify.app/" target="_blank" class="card" data-category="생명과학">
             <div class="card-image" style="background-color: #14B8A6;">
                 Pedigree Analysis
@@ -940,11 +969,11 @@
             </div>
         </a>
 
-        <!-- 별 거리 측정 (지구과학) -->
+        <!-- 별 거리 측정 (지구과학 - 황토/앰버 계열) -->
         <a href="https://stellardistancehuk.netlify.app/" target="_blank" class="card" data-category="지구과학">
-            <div class="card-image" style="background-color: #1D3557;">
+            <div class="card-image" style="background-color: #B45309;">
                 Stellar Distance
-                <div class="icon-box" style="background-color: #12233B;">✨</div>
+                <div class="icon-box" style="background-color: #8C3E06;">✨</div>
             </div>
             <div class="card-content">
                 <div class="card-title">별 거리 측정</div>
@@ -964,11 +993,11 @@
             </div>
         </a>
 
-        <!-- 별 관측 (지구과학) -->
+        <!-- 별 관측 (지구과학 - 황토/앰버 계열) -->
         <a href="https://stargazinghuk.netlify.app/" target="_blank" class="card" data-category="지구과학">
-            <div class="card-image" style="background-color: #2B2D42;">
+            <div class="card-image" style="background-color: #A16207;">
                 Star Gazing
-                <div class="icon-box" style="background-color: #1B1D2B;">🔭</div>
+                <div class="icon-box" style="background-color: #7A4904;">🔭</div>
             </div>
             <div class="card-content">
                 <div class="card-title">별 관측</div>
@@ -988,11 +1017,11 @@
             </div>
         </a>
 
-        <!-- 배설계 (생명과학) -->
+        <!-- 배설계 (생명과학 - 초록 계열) -->
         <a href="https://excretorysystemhuk.netlify.app/" target="_blank" class="card" data-category="생명과학">
-            <div class="card-image" style="background-color: #D97706;">
+            <div class="card-image" style="background-color: #65A30D;">
                 Excretory System
-                <div class="icon-box" style="background-color: #B45309;">💧</div>
+                <div class="icon-box" style="background-color: #4D7C0F;">💧</div>
             </div>
             <div class="card-content">
                 <div class="card-title">배설계</div>
@@ -1012,11 +1041,11 @@
             </div>
         </a>
 
-        <!-- 소화계 (생명과학) -->
+        <!-- 소화계 (생명과학 - 초록 계열) -->
         <a href="https://digestivesystemhuk.netlify.app/" target="_blank" class="card" data-category="생명과학">
-            <div class="card-image" style="background-color: #EA580C;">
+            <div class="card-image" style="background-color: #34A853;">
                 Digestive System
-                <div class="icon-box" style="background-color: #C2410C;">🍔</div>
+                <div class="icon-box" style="background-color: #25823E;">🍔</div>
             </div>
             <div class="card-content">
                 <div class="card-title">소화계</div>
@@ -1036,11 +1065,11 @@
             </div>
         </a>
 
-        <!-- 순환계 (생명과학) -->
+        <!-- 순환계 (생명과학 - 초록 계열) -->
         <a href="https://circulatorysystemhuk.netlify.app/" target="_blank" class="card" data-category="생명과학">
-            <div class="card-image" style="background-color: #E63946;">
+            <div class="card-image" style="background-color: #15803D;">
                 Circulatory System
-                <div class="icon-box" style="background-color: #B82834;">❤️</div>
+                <div class="icon-box" style="background-color: #166534;">❤️</div>
             </div>
             <div class="card-content">
                 <div class="card-title">순환계</div>
@@ -1060,11 +1089,11 @@
             </div>
         </a>
 
-        <!-- 신경계 (생명과학) -->
+        <!-- 신경계 (생명과학 - 초록 계열) -->
         <a href="https://nervoussystemhuk.netlify.app/" target="_blank" class="card" data-category="생명과학">
-            <div class="card-image" style="background-color: #7C3AED;">
+            <div class="card-image" style="background-color: #0D9488;">
                 Nervous System
-                <div class="icon-box" style="background-color: #5B21B6;">🧠</div>
+                <div class="icon-box" style="background-color: #0F766E;">🧠</div>
             </div>
             <div class="card-content">
                 <div class="card-title">신경계</div>
@@ -1084,11 +1113,11 @@
             </div>
         </a>
 
-        <!-- 호흡계 (생명과학) -->
+        <!-- 호흡계 (생명과학 - 초록 계열) -->
         <a href="https://respiratorysystemhuk.netlify.app/" target="_blank" class="card" data-category="생명과학">
-            <div class="card-image" style="background-color: #0284C7;">
+            <div class="card-image" style="background-color: #38B2AC;">
                 Respiratory System
-                <div class="icon-box" style="background-color: #0369A1;">🫁</div>
+                <div class="icon-box" style="background-color: #2C7A7B;">🫁</div>
             </div>
             <div class="card-content">
                 <div class="card-title">호흡계</div>
@@ -1107,9 +1136,6 @@
                 </div>
             </div>
         </a>
-        
-
-        
     </div>
 
     <!-- 오른쪽 하단 HUK 캐릭터 -->
