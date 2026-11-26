@@ -282,14 +282,22 @@
             color: #333;
         }
         
-        .site-switch {
-            display: flex;
-            flex-direction: column;
-            width: 90px;
+        /* 네비게이션 전체를 감싸는 래퍼 (위치 고정 담당) */
+        .site-switch-wrap {
             position: fixed;
             top: 56px;
             right: 14px;
             z-index: 6000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* 기존 메뉴 박스와 CLASSHUK 박스 사이 간격 */
+        }
+
+        /* 기존 .site-switch에서 position, top, right, z-index 제거 */
+        .site-switch {
+            display: flex;
+            flex-direction: column;
+            width: 90px;
             gap: 8px;
             align-items: stretch;
             padding: 6px 8px;
@@ -299,6 +307,21 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 10px 25px rgba(0,0,0,.18);
+        }
+
+        /* CLASSHUK 버튼 전용 스타일 */
+        .switch-btn.is-classhuk {
+            background: #0fb9b1;
+            color: #fff;
+            border-color: rgba(255,255,255,0.65);
+        }
+
+        /* 클릭 시(active) 또는 활성화(is-active) 시 배경 흰색, 글씨 #0fb9b1 */
+        .switch-btn.is-classhuk:active,
+        .switch-btn.is-classhuk.is-active {
+            background: #fff;
+            color: #0fb9b1;
+            border-color: #fff;
         }
         .switch-btn {
             display: inline-flex;
@@ -330,7 +353,7 @@
 
         @media (max-width: 900px) {
             .lang-picker { right: 12px; top: 10px; }
-            .site-switch { top: 56px; right: 12px; }
+            .site-switch-wrap { top: 56px; right: 12px; }
         }
 
         /* 항상 맨 앞에 고정되는 카드 */
@@ -363,15 +386,22 @@
         </select>
     </div>
 
-    <!-- 다른 사이트로 이동하는 네비게이션 -->
-    <nav class="site-switch" aria-label="사이트 이동">
-        <a id="navUploader" class="switch-btn is-inactive" href="https://joo.is/lefthuk" target="_blank" rel="noopener">업로더</a>
-        <a id="navData" class="switch-btn is-inactive" href="https://joo.is/righthuk" target="_blank" rel="noopener">데이터</a>
-        <a id="navReport" class="switch-btn is-inactive" href="https://joo.is/reporthuk" target="_blank" rel="noopener">보고서</a>
-        <a id="navDashboard" class="switch-btn is-inactive" href="https://joo.is/dashboardhuk" target="_blank" rel="noopener">대시보드</a>
-        <a id="navExtension" class="switch-btn is-active" href="#">확장</a>
-        <a id="navCommunity" class="switch-btn is-inactive" href="https://joo.is/sharehuk" target="_blank" rel="noopener">커뮤니티</a>
-    </nav>
+    <!-- 다른 사이트로 이동하는 네비게이션 + CLASSHUK 단독 박스 -->
+    <div class="site-switch-wrap">
+        <nav class="site-switch" aria-label="사이트 이동">
+            <a id="navUploader" class="switch-btn is-inactive" href="https://joo.is/lefthuk" target="_blank" rel="noopener">업로더</a>
+            <a id="navData" class="switch-btn is-inactive" href="https://joo.is/righthuk" target="_blank" rel="noopener">데이터</a>
+            <a id="navReport" class="switch-btn is-inactive" href="https://joo.is/reporthuk" target="_blank" rel="noopener">보고서</a>
+            <a id="navDashboard" class="switch-btn is-inactive" href="https://joo.is/dashboardhuk" target="_blank" rel="noopener">대시보드</a>
+            <a id="navExtension" class="switch-btn is-active" href="#">확장</a>
+            <a id="navCommunity" class="switch-btn is-inactive" href="https://joo.is/sharehuk" target="_blank" rel="noopener">커뮤니티</a>
+        </nav>
+
+        <!-- 단독 네모칸 안의 CLASSHUK 버튼 -->
+        <div class="site-switch">
+            <a id="navClasshuk" class="switch-btn is-classhuk" href="https://joo.is/classhuk" target="_blank" rel="noopener">CLASSHUK</a>
+        </div>
+    </div>
 
     <header>
         데이터 과학 실험 확장 모음
